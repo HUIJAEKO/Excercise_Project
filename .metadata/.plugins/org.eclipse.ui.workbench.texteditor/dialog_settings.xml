@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="p"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="p"/>
+			<item value="white"/>
+			<item value="valid_gender"/>
+			<item value="valid_password"/>
+			<item value="valid_username"/>
+			<item value="valid_subregion"/>
+			<item value="valid_region"/>
+			<item value="valid_phone"/>
+			<item value="nameError"/>
+			<item value="valid_birthdate"/>
+			<item value="valid_name"/>
+			<item value="save"/>
+			<item value="&apos;"/>
+			<item value="css"/>
+			<item value="$"/>
+		</list>
+		<list key="replacehistory">
+			<item value="span"/>
+			<item value="gender_Error"/>
+			<item value="password_Error"/>
+			<item value="username_Error"/>
+			<item value="subregion_Error"/>
+			<item value="region_Error"/>
+			<item value="phone_Error"/>
+			<item value="name_Error"/>
+			<item value="birthdate_Error"/>
+			<item value="nameError"/>
+			<item value="&quot;"/>
+			<item value="$"/>
+			<item value="false"/>
+			<item value="회사"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="860"/>
+		<item key="DIALOG_Y_ORIGIN" value="234"/>
+		<item key="DIALOG_WIDTH" value="369"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

@@ -1,0 +1,24 @@
+server:
+  port: 8081
+  
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/excercise?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
+  thymeleaf:
+     prefix : classpath:templates/
+     suffix : .html
+     cache : false
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
