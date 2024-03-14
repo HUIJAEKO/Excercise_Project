@@ -1,9 +1,12 @@
 package com.example.excercise.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.example.excercise.DTO.PageDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.excercise.DTO.PostDTO;
@@ -31,7 +34,12 @@ public class PostService {
 		return postRepository.findAllByOrderByPostCreatedTimeDesc(PageRequest.of(0, 5));
 	}
 
+	public List<PostEntity> getList(PageDTO pageDTO) {
+		Long totalCount = postRepository.count();
+		pageDTO.setRow();
+		pageDTO.setNum(totalCount);
 
-
-	
+		Pageable pageable = PageRequest.of(pageDTO.getPage().intValue() - 1, pageDTO.getPostPerPage().intValue());
+		return postRepository.findAll(pageable).getContent();
+	}
 }
