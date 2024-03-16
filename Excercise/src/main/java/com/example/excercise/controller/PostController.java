@@ -70,10 +70,14 @@ public class PostController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Object principal = authentication.getPrincipal();
 		if (principal instanceof CustomUserDetails) {
+			//현재 사용자 정보
 			CustomUserDetails userDetails = (CustomUserDetails) principal;
+			//블로그 글 불러오기
 			PostDTO postDTO = postService.postDetail(id);
 			model.addAttribute("post", postDTO);
+			//블로그 글 작성자 불러오기
 			UserEntity userEntity = postService.getPostWriter(id);
+			//현재 사용자가 블로그 글 작성자라면
 			if (userDetails.getName().equals(userEntity.getName())){
 				return "post/postDetail";
 			}else{
