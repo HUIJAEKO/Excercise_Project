@@ -30,8 +30,8 @@ public class PostService {
 		postRepository.save(postEntity);
 	}
 	
-	public List<PostEntity> find5Post(){
-		return postRepository.findAllByOrderByPostCreatedTimeDesc(PageRequest.of(0, 5));
+	public List<PostEntity> find8Post(){
+		return postRepository.findAllByOrderByPostCreatedTimeDesc(PageRequest.of(0, 8));
 	}
 
 	public List<PostEntity> getList(PageDTO pageDTO) {
@@ -41,5 +41,26 @@ public class PostService {
 
 		Pageable pageable = PageRequest.of(pageDTO.getPage().intValue() - 1, pageDTO.getPostPerPage().intValue());
 		return postRepository.findAll(pageable).getContent();
+	}
+
+	public UserEntity getPostWriter(Long id){
+		Optional<PostEntity> postEntityOptional = postRepository.findById(id);
+		if (postEntityOptional.isPresent()) {
+			PostEntity postEntity = postEntityOptional.get();
+			return postEntity.getUserEntity();
+		} else {
+			return null; // 혹은 적절한 예외 처리
+		}
+	}
+
+	public PostDTO postDetail(Long id) {
+		Optional<PostEntity> post = postRepository.findById(id);
+		if(post.isPresent()){
+			PostEntity postEntity = post.get();
+			PostDTO postDTO = PostDTO.toPostDTO(postEntity);
+			return postDTO;
+		}else{
+			return null;
+		}
 	}
 }

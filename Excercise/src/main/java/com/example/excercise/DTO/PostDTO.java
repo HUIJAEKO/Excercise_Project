@@ -23,6 +23,15 @@ public class PostDTO {
 	private List<ReplyEntity> replyEntity;
 	private Timestamp postCreatedTime;
 
+	public static PostDTO toPostDTO(PostEntity postEntity) {
+		PostDTO postDTO = new PostDTO();
+		postDTO.setPostTitle(postEntity.getPostTitle());
+		postDTO.setPostContent(postEntity.getPostContent());
+		postDTO.setRegion(postEntity.getRegion());
+		postDTO.setSubregion(postEntity.getSubregion());
+		return postDTO;
+	}
+
 	public Long getId() {
 		return id;
 	}

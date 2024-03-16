@@ -84,7 +84,7 @@ public class UserController {
 		if(principal instanceof CustomUserDetails) {
 			CustomUserDetails userDetails = (CustomUserDetails) principal;
 			model.addAttribute("username", userDetails.getName());
-			model.addAttribute("posts", postService.find5Post());
+			model.addAttribute("posts", postService.find8Post());
 		}
 		return "user/main";
 	}

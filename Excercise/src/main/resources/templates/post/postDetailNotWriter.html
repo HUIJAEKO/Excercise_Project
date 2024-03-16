@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세보기</title>
+    <link rel="stylesheet" th:href="@{/css/postDetail.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+<body>
+<header class="header">
+    <div class="user_actions">
+        <button onclick="location.href='/user/logout'">로그아웃</button>
+        <button onclick="location.href='/user/detail'">마이페이지</button>
+    </div>
+</header>
+<div class="main-content" style="flex-direction: column;">
+    <div class="content" style="width: 80%; margin: 20px auto;">
+        <form>
+            <div class="form-group">
+                <label for="title">제목:</label>
+                <input type="text" id="title" name="postTitle" th:value="${post.postTitle}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="region">지역:</label>
+                <input type="text" id="region" name="region" th:value="${post.region}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="subregion">하위지역:</label>
+                <input type="text" id="subregion" name="subregion" th:value="${post.subregion}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="content">내용:</label>
+                <textarea id="content" name="postContent" rows="10" readonly th:text="${post.postContent}"></textarea>
+            </div>
+        </form>
+        <div class="user-actions">
+            <button onclick="history.back()">뒤로가기</button>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 운동메이트 만들기</p>
+</footer>
+<script th:src="@{/js/postDetail.js}"></script>
+</body>
+</html>

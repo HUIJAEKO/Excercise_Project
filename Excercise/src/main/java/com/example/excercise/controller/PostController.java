@@ -3,6 +3,9 @@ package com.example.excercise.controller;
 
 import com.example.excercise.DTO.PageDTO;
 import com.example.excercise.entity.PostEntity;
+import com.example.excercise.entity.ReplyEntity;
+import com.example.excercise.entity.UserEntity;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -61,5 +64,22 @@ public class PostController {
 		return "/post/allPost";
 	}
 
-
+	//게시글 상세조회(로그인한 사람이 작성자일때, 아닐때 나눠서 이동)
+	@GetMapping("/post/postDetail/{id}")
+	public String postDetail(@PathVariable("id") Long id, Model model){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = authentication.getPrincipal();
+		if (principal instanceof CustomUserDetails) {
+			CustomUserDetails userDetails = (CustomUserDetails) principal;
+			PostDTO postDTO = postService.postDetail(id);
+			model.addAttribute("post", postDTO);
+			UserEntity userEntity = postService.getPostWriter(id);
+			if (userDetails.getName().equals(userEntity.getName())){
+				return "post/postDetail";
+			}else{
+				return "post/postDetailNotWriter";
+			}
+		}
+		return "post/postDetailNotWriter";
+	}
 }
