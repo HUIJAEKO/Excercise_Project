@@ -8,17 +8,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PageDTO {
-    private Long page;
-    private Long postPerPage;
-    private Long totalPage;
-    private Long startRow;
-    private Long lastRow;
-    private Long nowPageNumber;
-    private Long pageNumber;
-    private Long startPageNumber;
-    private Long lastPageNumber;
-    private boolean previous;
-    private boolean next;
+    private Long page; //현재페이지
+    private Long postPerPage; //한페이지에 글이 몇개인지
+    private Long totalPage; //페이지 전체수
+    private Long startRow; //페이지 첫글
+    private Long lastRow; //페이지 마지막글
+    private Long nowPageNumber; //현재 페이지블럭
+    private Long pageNumber; //전체 페이지블럭
+    private Long startPageNumber; //시작 페이지블럭
+    private Long lastPageNumber; //마지막 페이지블럭
+    private boolean previous; //이전버튼
+    private boolean next; //다음버튼
 
     //현재페이지, 한 페이지에 몇 개의 게시물, 하나의 블럭에 몇 개의 페이지
     public PageDTO(){
@@ -60,7 +60,7 @@ public class PageDTO {
         this.lastPageNumber = Math.min(curBlock * this.getPageNumber(), totalPage);
 
         //현재 페이지가 2이상이면 이전 버튼 활성화
-        this.previous = curBlock > 1;
-        this.next = curBlock < (totalPage / this.getPageNumber() + (totalPage % this.getPageNumber() > 0 ? 1 : 0));
+        this.previous = page > 1;
+        this.next = page < totalPage ;
     }
 }

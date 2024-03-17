@@ -31,10 +31,10 @@
 	
 		<div class="action-buttons">
 			<button type="button" id="edit_profile"
-				th:onclick="'location.href=\'' + @{/user/edit} + '\''">정보
+				onclick= "location.href='/user/edit'">정보
 				수정하기</button>
 			<button type="button" id="edit_password"
-				th:onclick="'location.href=\'' + @{/user/editPassword} + '\''">비밀번호 변경하기</button>
+				onclick="location.href='/user/editPassword'">비밀번호 변경하기</button>
 			<button type="button" id="delete_account"
 				th:onclick="confirmDelete()">탈퇴하기</button>
 		</div>

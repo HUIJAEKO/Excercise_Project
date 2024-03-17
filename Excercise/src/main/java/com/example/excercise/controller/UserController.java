@@ -81,9 +81,8 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		//authentication을 통해 정보 가져오기
 		Object principal = authentication.getPrincipal();
-		if(principal instanceof CustomUserDetails) {
-			CustomUserDetails userDetails = (CustomUserDetails) principal;
-			model.addAttribute("username", userDetails.getName());
+		if(principal instanceof CustomUserDetails userDetails) {
+            model.addAttribute("username", userDetails.getName());
 			model.addAttribute("posts", postService.find8Post());
 		}
 		return "user/main";
@@ -92,8 +91,7 @@ public class UserController {
 	//이메일 중복체크
 	@PostMapping("/user/usernameCheck")
 	public @ResponseBody String idCheck(@RequestParam(name = "username") String username) {
-		String checkResult = userService.idcheck(username);
-		return checkResult;
+        return userService.idcheck(username);
 	}
 	
 	//로그인 화면 이동

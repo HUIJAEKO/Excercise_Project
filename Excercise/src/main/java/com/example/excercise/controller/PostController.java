@@ -86,4 +86,18 @@ public class PostController {
 		}
 		return "post/postDetailNotWriter";
 	}
+
+	//게시글 삭제
+	@DeleteMapping("/post/delete/{id}")
+	public String deletePost(@PathVariable("id") Long id, Model model){
+		postService.deletePost(id);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Object principal = authentication.getPrincipal();
+		if (principal instanceof CustomUserDetails) {
+			CustomUserDetails userDetails = (CustomUserDetails) principal;
+			model.addAttribute("username", userDetails.getName());
+			return "user/main";
+		}
+		return "user/main";
+	}
 }
