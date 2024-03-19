@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
@@ -21,6 +23,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 	
 	
@@ -38,11 +41,12 @@ public class SecurityConfig {
 						.authorizeHttpRequests((auth)->auth
 										.requestMatchers("/","/user/login","/user/agree","/user/signup","/user/usernameCheck","/user/main").permitAll()
 										.requestMatchers("/css/**", "/js/**").permitAll()
+										.requestMatchers(HttpMethod.PATCH, "/user/edit", "/user/editPassword").authenticated()
 										.anyRequest().authenticated()
 						);
 		
 		http
-						.formLogin((auth)->auth.loginPage("/user/login")
+						.formLogin((auth)->auth.loginPage("/")
 							    	.loginProcessingUrl("/user/login")
 							    	.defaultSuccessUrl("/user/main", true)
 							    	.failureHandler(new CustomAuthenticationFailureHandler())

@@ -17,22 +17,22 @@ import com.example.excercise.repository.UserRepository;
 
 @Service
 public class PostService {
-	
+
 	@Autowired
 	private PostRepository postRepository;
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	//글작성
 	public void save(PostDTO postDTO, Long userId) {
-		PostEntity postEntity = PostDTO.toPostEntity(postDTO); 
+		PostEntity postEntity = PostDTO.toPostEntity(postDTO);
 		UserEntity userEntity = userRepository.findById(userId).orElse(null);
 		postEntity.setUserEntity(userEntity);
 		postRepository.save(postEntity);
 	}
-	
+
 	//최신글 8개 불러오기
-	public List<PostEntity> find8Post(){
+	public List<PostEntity> find8Post() {
 		return postRepository.findAllByOrderByPostCreatedTimeDesc(PageRequest.of(0, 8));
 	}
 
@@ -46,7 +46,7 @@ public class PostService {
 	}
 
 	//글작성자 불러오기
-	public UserEntity getPostWriter(Long id){
+	public UserEntity getPostWriter(Long id) {
 		Optional<PostEntity> postEntityOptional = postRepository.findById(id);
 		if (postEntityOptional.isPresent()) {
 			PostEntity postEntity = postEntityOptional.get();
@@ -59,17 +59,25 @@ public class PostService {
 	//글 상세조회
 	public PostDTO postDetail(Long id) {
 		Optional<PostEntity> post = postRepository.findById(id);
-		if(post.isPresent()){
+		if (post.isPresent()) {
 			PostEntity postEntity = post.get();
 			PostDTO postDTO = PostDTO.toPostDTO(postEntity);
 			return postDTO;
-		}else{
+		} else {
 			return null;
 		}
 	}
 
 	//글삭제
-	public void deletePost(Long id) {
-		postRepository.deleteById(id);
+	public PostDTO deletePost(Long id) {
+		Optional<PostEntity> post = postRepository.findById(id);
+		if (post.isPresent()) {
+			PostEntity postEntity = post.get();
+			PostDTO postDTO = PostDTO.toPostDTO(postEntity);
+			postRepository.deleteById(id);
+			return postDTO;
+		} else {
+			return null;
+		}
 	}
 }

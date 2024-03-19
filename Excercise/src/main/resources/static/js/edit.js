@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("#editProfilButton").click(function() {
+	$("#editProfilButton").click(function(event) {
 		event.preventDefault();
 		var phone = $("#phone").val();
 		var region = $("#region").val();
@@ -25,9 +25,8 @@ $(document).ready(function() {
 				}
 			});
 		}
-		return false
 	})
-}),
+})
 
 
 	document.addEventListener('DOMContentLoaded', function() {

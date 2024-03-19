@@ -26,6 +26,7 @@ public class PostDTO {
 	public static PostDTO toPostDTO(PostEntity postEntity) {
 		PostDTO postDTO = new PostDTO();
 		postDTO.setPostTitle(postEntity.getPostTitle());
+		postDTO.setId(postEntity.getId());
 		postDTO.setPostContent(postEntity.getPostContent());
 		postDTO.setRegion(postEntity.getRegion());
 		postDTO.setSubregion(postEntity.getSubregion());

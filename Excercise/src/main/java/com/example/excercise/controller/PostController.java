@@ -53,7 +53,6 @@ public class PostController {
 		pageDTO.setPage((long) page);
 		List<PostEntity> postList = postService.getList(pageDTO);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		//authentication을 통해 정보 가져오기
 		Object principal = authentication.getPrincipal();
 		if (principal instanceof CustomUserDetails) {
 			CustomUserDetails userDetails = (CustomUserDetails) principal;
@@ -90,12 +89,13 @@ public class PostController {
 	//게시글 삭제
 	@DeleteMapping("/post/delete/{id}")
 	public String deletePost(@PathVariable("id") Long id, Model model){
-		postService.deletePost(id);
+		PostDTO postDTO = postService.deletePost(id);
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Object principal = authentication.getPrincipal();
 		if (principal instanceof CustomUserDetails) {
 			CustomUserDetails userDetails = (CustomUserDetails) principal;
 			model.addAttribute("username", userDetails.getName());
+			model.addAttribute("post", postDTO);
 			return "user/main";
 		}
 		return "user/main";

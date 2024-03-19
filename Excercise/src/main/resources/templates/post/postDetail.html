@@ -37,7 +37,7 @@
             <!-- 수정된 부분: 동적 URL 생성 -->
             <button onclick="location.href='/post/edit/ + ${post.id}'">수정하기</button>
             <button type="button" id="delete_post"
-                    th:attr="onclick=|confirmDelete(''+${post.id})|" th:data-post-id="${post.id}">삭제하기</button>
+                    th:onclick="'confirmDelete(' + ${post.id} + ')'">삭제하기</button>
             <button onclick="history.back()">뒤로가기</button>
         </div>
     </div>

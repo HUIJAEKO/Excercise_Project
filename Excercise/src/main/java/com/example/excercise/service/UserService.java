@@ -101,18 +101,4 @@ public class UserService {
 	}
 }
 
-//	public UserDTO login(UserDTO userDTO) {
-//	Optional<UserEntity> byLoginUsername = userRepository.findByUsername(userDTO.getUsername());
-//	if(byLoginUsername.isPresent()) {
-//		UserEntity userEntity = byLoginUsername.get();
-//		if(userEntity.getPassword().equals(userDTO.getPassword())) {
-//			UserDTO dto = UserDTO.toUserDTO(userEntity);	
-//			return dto;
-//		}else {
-//			return null;
-//		}
-//	}else{
-//		return null;
-//	}
-//}
 

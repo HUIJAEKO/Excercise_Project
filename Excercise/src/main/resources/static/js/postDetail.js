@@ -1,6 +1,7 @@
-function confirmDelete() {
+function confirmDelete(id) {
     var confirmation = confirm("정말로 삭제하시겠습니까?");
     if (confirmation) {
+        console.log(id);
         $.ajax({
             url: '/post/delete/' + id,
             type: 'DELETE',

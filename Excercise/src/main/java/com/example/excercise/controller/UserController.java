@@ -184,31 +184,6 @@ public class UserController {
 	    return "user/detail";
     }  
 }
-
-
-	
-	
-//	 @PostMapping("/login")
-//	    public String login(@ModelAttribute UserDTO userDTO,HttpSession session, Model model) {
-//	        UserDTO loginResult = userService.login(userDTO);  
-//	        if (loginResult != null) {
-//	            session.setAttribute("loginInformation", loginResult);
-//	            model.addAttribute("loginName", loginResult.getName());
-//	            return "main";
-//	        } else {
-//	        	model.addAttribute("loginError", "아이디 또는 비밀번호가 일치하지 않습니다.");
-//	            return "login";
-//	            
-//	        }
-//	    }
-
-	
-	
-//	 @GetMapping("/logout")
-//	 public String logout(HttpSession session) {
-//		 session.invalidate();
-//		 return "login";
-//	 }
 	 
 	 
 	 
