@@ -45,7 +45,7 @@ public class PostController {
 		}
 		return "redirect:/user/main";
 	}
-//https://velog.io/@kk95610/Spring%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0
+	//https://velog.io/@kk95610/Spring%EA%B2%8C%EC%8B%9C%ED%8C%90-%EB%A7%8C%EB%93%A4%EA%B8%B0
 	//전체글보기
 	@GetMapping("/post/allPost")
 	public String allPost(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
@@ -100,4 +100,7 @@ public class PostController {
 		}
 		return "user/main";
 	}
+
+	//게시글 필터링
+
 }

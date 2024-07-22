@@ -13,5 +13,6 @@ import com.example.excercise.entity.PostEntity;
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, Long>{
 	List<PostEntity> findAllByOrderByPostCreatedTimeDesc(Pageable pageable);
+	List<PostEntity> findBySubregion(String subregion);
 
 }
