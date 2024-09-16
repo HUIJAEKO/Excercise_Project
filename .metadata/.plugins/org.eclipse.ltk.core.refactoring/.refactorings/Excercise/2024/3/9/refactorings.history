@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Encapsulate field &apos;com.example.excercise.DTO.PostDTO.userId&apos; in &apos;com.example.excercise.DTO.PostDTO&apos;&#x0D;&#x0A;- Original project: &apos;Excercise&apos;&#x0D;&#x0A;- Original element: &apos;com.example.excercise.DTO.PostDTO.userId&apos;&#x0D;&#x0A;- Getter method name: &apos;getUserId&apos;&#x0D;&#x0A;- Setter method name: &apos;setUserId&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;userId&apos;" flags="589830" getter="getUserId" id="org.eclipse.jdt.ui.self.encapsulate" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;com.example.excercise.DTO{PostDTO.java[PostDTO^userId" insertion="16" setter="setUserId" stamp="1709355651119" version="1.0" visibility="1"/>
-</session>
